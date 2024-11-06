@@ -26,7 +26,7 @@ ob_start();
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="../images/lgadmin.jpg" class="user-image" alt="User Image">
+                  <img src="./images/admin.png" class="user-image" alt="User Image">
                   <span class="hidden-xs">Tài khoản</span>
                 </a>
                 <ul class="dropdown-menu">

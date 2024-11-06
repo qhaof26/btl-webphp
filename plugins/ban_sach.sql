@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 26, 2021 lúc 11:13 PM
--- Phiên bản máy phục vụ: 10.4.17-MariaDB
--- Phiên bản PHP: 8.0.2
+-- Thời gian đã tạo: Th10 06, 2024 lúc 07:23 AM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE `chitiethoadon` (
   `soluong` int(11) NOT NULL,
   `dongia` float NOT NULL,
   `thanhtien` decimal(9,2) NOT NULL,
-  `madv` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+  `madv` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `chitiethoadon` (
 --
 
 INSERT INTO `chitiethoadon` (`id_chi_tiet_hoadon`, `sodh`, `masp`, `soluong`, `dongia`, `thanhtien`, `madv`) VALUES
-(144, 127, 214, 1, 214, '214.00', '15');
+(144, 127, 214, 1, 214, 214.00, '15');
 
 -- --------------------------------------------------------
 
@@ -52,7 +52,7 @@ INSERT INTO `chitiethoadon` (`id_chi_tiet_hoadon`, `sodh`, `masp`, `soluong`, `d
 
 CREATE TABLE `dichvu` (
   `madv` bigint(20) NOT NULL,
-  `tendv` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `tendv` varchar(200) NOT NULL,
   `gia` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -72,12 +72,12 @@ INSERT INTO `dichvu` (`madv`, `tendv`, `gia`) VALUES
 
 CREATE TABLE `hoadon` (
   `sodh` bigint(20) NOT NULL,
-  `emailkh` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `emailkh` varchar(50) NOT NULL,
   `ngaygiao` date NOT NULL,
-  `tenkh` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `diachi` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `dienthoai` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `hinhthucthanhtoan` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `tenkh` varchar(100) NOT NULL,
+  `diachi` varchar(250) NOT NULL,
+  `dienthoai` varchar(50) NOT NULL,
+  `hinhthucthanhtoan` varchar(100) NOT NULL,
   `thanhtien` decimal(9,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -86,7 +86,7 @@ CREATE TABLE `hoadon` (
 --
 
 INSERT INTO `hoadon` (`sodh`, `emailkh`, `ngaygiao`, `tenkh`, `diachi`, `dienthoai`, `hinhthucthanhtoan`, `thanhtien`) VALUES
-(127, 'thanh@gmail.com', '2021-06-26', 'Thanh Truong', 'Hà Nội', '1234567890', 'ATM', '224.00');
+(127, 'thanh@gmail.com', '2021-06-26', 'Thanh Truong', 'Hà Nội', '1234567890', 'ATM', 224.00);
 
 -- --------------------------------------------------------
 
@@ -95,8 +95,8 @@ INSERT INTO `hoadon` (`sodh`, `emailkh`, `ngaygiao`, `tenkh`, `diachi`, `dientho
 --
 
 CREATE TABLE `loginadmin` (
-  `tendangnhap` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `matkhau` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `tendangnhap` varchar(50) NOT NULL,
+  `matkhau` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -113,10 +113,10 @@ INSERT INTO `loginadmin` (`tendangnhap`, `matkhau`) VALUES
 --
 
 CREATE TABLE `loginuser` (
-  `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(50) NOT NULL,
   `matkhau` int(200) NOT NULL,
-  `HoTen` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `DienThoai` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `HoTen` varchar(100) NOT NULL,
+  `DienThoai` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -124,8 +124,9 @@ CREATE TABLE `loginuser` (
 --
 
 INSERT INTO `loginuser` (`email`, `matkhau`, `HoTen`, `DienThoai`) VALUES
-('thanh@gmail.com', 123, 'Thanh Truong', '1234567890'),
-('tungvu@gmail.com', 123, 'Vũ Đình Tùng', '0123456789');
+('chiduc@gmail.com', 123, 'Chi Duc', '0123456789'),
+('lybinh@gmail.com', 123, 'Ly Binh', '1234567890'),
+('quochao@gmail.com', 123, 'Quoc Hao', '098888998');
 
 -- --------------------------------------------------------
 
@@ -146,7 +147,9 @@ INSERT INTO `nhaxuatban` (`ID`, `Ten`) VALUES
 (15, 'NXB Trẻ'),
 (16, 'NXB Tổng hợp TP.HCM'),
 (17, 'NXB Thế Giới'),
-(18, 'NXB Hội Nhà Văn');
+(18, 'NXB Hội Nhà Văn'),
+(19, 'Kim Đồng'),
+(20, 'Lý Bính');
 
 -- --------------------------------------------------------
 
@@ -156,15 +159,15 @@ INSERT INTO `nhaxuatban` (`ID`, `Ten`) VALUES
 
 CREATE TABLE `sanpham` (
   `ID` bigint(10) NOT NULL,
-  `Ten` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `Ten` varchar(200) NOT NULL,
   `Gia` double NOT NULL,
-  `HinhAnh` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `HinhAnh` varchar(200) NOT NULL,
   `Manhasx` bigint(10) NOT NULL,
-  `Mota` text COLLATE utf8_unicode_ci NOT NULL,
+  `Mota` text NOT NULL,
   `date` date NOT NULL,
   `KhuyenMai` tinyint(1) NOT NULL,
   `giakhuyenmai` double NOT NULL,
-  `tacgia` varchar(256) COLLATE utf8_unicode_ci NOT NULL
+  `tacgia` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -177,7 +180,11 @@ INSERT INTO `sanpham` (`ID`, `Ten`, `Gia`, `HinhAnh`, `Manhasx`, `Mota`, `date`,
 (214, 'Muôn Kiếp Nhân Sinh Tập 2', 268, 'MKNS.jpg', 16, '<p>T&aacute;c phẩm Mu&ocirc;n Kiếp Nh&acirc;n Sinh tập 1 của t&aacute;c giả Nguy&ecirc;n Phong xuất bản giữa t&acirc;m điểm của đại dịch đ&atilde; thực sự tạo n&ecirc;n một hiện tượng xuất bản hiếm c&oacute; ở Việt Nam. Cuốn s&aacute;ch đ&atilde; khơi dậy những trực cảm tiềm ẩn của con người, l&agrave;m thay đổi g&oacute;c nh&igrave;n cuộc sống v&agrave; thức tỉnh nhận thức của ch&uacute;ng ta giữa một thế giới đang ng&agrave;y c&agrave;ng bất ổn v&agrave; đầy biến động. Ngo&agrave;i việc ph&aacute;t h&agrave;nh hơn 200.000 bản trong 6 th&aacute;ng, chưa kể lượng ph&aacute;t h&agrave;nh Ebook v&agrave; Audio Book qua Voiz-FM, First News c&ograve;n nhận được h&agrave;ng ng&agrave;n tin nhắn, e-mail chuyển lời cảm ơn đến t&aacute;c giả Nguy&ecirc;n Phong. Điều n&agrave;y chứng tỏ sức lan tỏa của cuốn s&aacute;ch đ&atilde; tạo n&ecirc;n một hiện tượng trong văn h&oacute;a đọc của năm 2020.</p>\r\n', '2021-06-26', 1, 214, 'Nguyên Phong'),
 (216, 'Hiểu Về Trái Tim (Tái Bản 2019) ', 138, 'image_195509_1_14922.jpg', 16, 'HIỂU VỀ TRÁI TIM – CUỐN SÁCH MỞ CỬA THẾ GIỚI CẢM XÚC CỦA MỖI NGƯỜI  \r\n\r\n“Hiểu về trái tim” là một cuốn sách đặc biệt được viết bởi thiền sư Minh Niệm. Với phong thái và lối hành văn gần gũi với những sinh hoạt của người Việt, thầy Minh Niệm đã thật sự thổi hồn Việt vào cuốn sách nhỏ này.\r\n\r\nXuất bản lần đầu tiên vào năm 2011, Hiểu Về Trái Tim trình làng cũng lúc với kỷ lục: cuốn sách có số lượng in lần đầu lớn nhất: 100.000 bản. Trung tâm sách kỷ lục Việt Nam công nhận kỳ tích ấy nhưng đến nay, con số phát hành của Hiểu về trái tim vẫn chưa có dấu hiệu chậm lại.\r\n\r\nLà tác phẩm đầu tay của nhà sư Minh Niệm, người sáng lập dòng thiền hiểu biết (Understanding Meditation), kết hợp giữa tư tưởng Phật giáo Đại thừa và Thiền nguyên thủy Vipassana, nhưng Hiểu Về Trái Tim không phải tác phẩm thuyết giáo về Phật pháp. Cuốn sách rất “đời” với những ưu tư của một người tu nhìn về cõi thế. Ở đó, có hạnh phúc, có đau khổ, có tình yêu, có cô đơn, có tuyệt vọng, có lười biếng, có yếu đuối, có buông xả… Nhưng, tất cả những hỉ nộ ái ố ấy đều được khoác lên tấm áo mới, một tấm áo tinh khiết và xuyên suốt, khiến người đọc khi nhìn vào, đều thấy mọi sự như nhẹ nhàng hơn…\r\n', '2021-06-26', 1, 110, 'Minh Niệm'),
 (218, 'Đừng Chạy Theo Số Đông ', 200, 'image_195509_1_37011.jpg', 17, 'Nếu tất cả mọi người ai cũng làm chủ doanh nghiệp, thì ai sẽ đi làm thuê?\r\n\r\nTôi.\r\n\r\nBởi lúc đó họ sẽ phải đấu giá để có được tôi.\r\n\r\nNhưng điều này không bao giờ xảy ra. Bởi ngay từ trong trứng đến lúc mọc cánh, chúng ta đã được dạy phải làm cho người khác cả đời. Chỉ có 1% được dạy khác.\r\n\r\nBạn không chạy theo số đông.\r\n\r\nBạn LÀ số đông.\r\n\r\nTuy nhiên bạn đừng nhầm lẫn. Cuốn sách này không chỉ nói về vấn đề “làm thuê” hay “làm riêng”. Đây chỉ là một trong những khía cạnh rất nhỏ.\r\n\r\nCuốn sách này muốn làm nổi bật một hệ tư duy ngầm lớn và khủng khiếp hơn thế mà chúng ta không nhận ra. Một sức hút vô hình nhưng mạnh mẽ.', '2021-06-26', 0, 0, 'Kiên Trần'),
-(219, 'Nhà Giả Kim (Tái Bản 2020) ', 79, 'image_195509_1_36793.jpg', 18, 'Tất cả những trải nghiệm trong chuyến phiêu du theo đuổi vận mệnh của mình đã giúp Santiago thấu hiểu được ý nghĩa sâu xa nhất của hạnh phúc, hòa hợp với vũ trụ và con người. \r\n\r\nTiểu thuyết Nhà giả kim của Paulo Coelho như một câu chuyện cổ tích giản dị, nhân ái, giàu chất thơ, thấm đẫm những minh triết huyền bí của phương Đông. Trong lần xuất bản đầu tiên tại Brazil vào năm 1988, sách chỉ bán được 900 bản. Nhưng, với số phận đặc biệt của cuốn sách dành cho toàn nhân loại, vượt ra ngoài biên giới quốc gia, Nhà giả kim đã làm rung động hàng triệu tâm hồn, trở thành một trong những cuốn sách bán chạy nhất mọi thời đại, và có thể làm thay đổi cuộc đời người đọc.\r\n\r\n“Nhưng nhà luyện kim đan không quan tâm mấy đến những điều ấy. Ông đã từng thấy nhiều người đến rồi đi, trong khi ốc đảo và sa mạc vẫn là ốc đảo và sa mạc. Ông đã thấy vua chúa và kẻ ăn xin đi qua biển cát này, cái biển cát thường xuyên thay hình đổi dạng vì gió thổi nhưng vẫn mãi mãi là biển cát mà ông đã biết từ thuở nhỏ. Tuy vậy, tự đáy lòng mình, ông không thể không cảm thấy vui trước hạnh phúc của mỗi người lữ khách, sau bao ngày chỉ có cát vàng với trời xanh nay được thấy chà là xanh tươi hiện ra trước mắt. ‘Có thể Thượng đế tạo ra sa mạc chỉ để cho con người biết quý trọng cây chà là,’ ông nghĩ.”', '2021-06-26', 1, 59, 'Paulo Coelho');
+(219, 'Nhà Giả Kim (Tái Bản 2020) ', 79, 'image_195509_1_36793.jpg', 18, 'Tất cả những trải nghiệm trong chuyến phiêu du theo đuổi vận mệnh của mình đã giúp Santiago thấu hiểu được ý nghĩa sâu xa nhất của hạnh phúc, hòa hợp với vũ trụ và con người. \r\n\r\nTiểu thuyết Nhà giả kim của Paulo Coelho như một câu chuyện cổ tích giản dị, nhân ái, giàu chất thơ, thấm đẫm những minh triết huyền bí của phương Đông. Trong lần xuất bản đầu tiên tại Brazil vào năm 1988, sách chỉ bán được 900 bản. Nhưng, với số phận đặc biệt của cuốn sách dành cho toàn nhân loại, vượt ra ngoài biên giới quốc gia, Nhà giả kim đã làm rung động hàng triệu tâm hồn, trở thành một trong những cuốn sách bán chạy nhất mọi thời đại, và có thể làm thay đổi cuộc đời người đọc.\r\n\r\n“Nhưng nhà luyện kim đan không quan tâm mấy đến những điều ấy. Ông đã từng thấy nhiều người đến rồi đi, trong khi ốc đảo và sa mạc vẫn là ốc đảo và sa mạc. Ông đã thấy vua chúa và kẻ ăn xin đi qua biển cát này, cái biển cát thường xuyên thay hình đổi dạng vì gió thổi nhưng vẫn mãi mãi là biển cát mà ông đã biết từ thuở nhỏ. Tuy vậy, tự đáy lòng mình, ông không thể không cảm thấy vui trước hạnh phúc của mỗi người lữ khách, sau bao ngày chỉ có cát vàng với trời xanh nay được thấy chà là xanh tươi hiện ra trước mắt. ‘Có thể Thượng đế tạo ra sa mạc chỉ để cho con người biết quý trọng cây chà là,’ ông nghĩ.”', '2021-06-26', 1, 59, 'Paulo Coelho'),
+(220, 'Doraemon', 100, 'Doraemon1.jpg', 19, '<p>C&acirc;u chuyện về một ch&uacute; m&egrave;o m&aacute;y quay về qu&aacute; khứ để gi&uacute;p cậu nh&oacute;c nobita ph&aacute;t triển</p>\r\n', '2024-11-06', 1, 90, 'Fujiko Fujio'),
+(221, 'Death Note ', 200, 'DeathNote_vol1_cover.jpg', 20, '<p>Viết về một người thanh ni&ecirc;n c&oacute; tinh thần bị rối loạn muốn huỷ diệt người xấu&nbsp;</p>\r\n', '2024-11-06', 1, 20, 'Ōba Tsugumi'),
+(222, 'Dragon Ball', 999, 'Goku-kid1.png', 20, '<p>truyện m&ocirc; tả cuộc h&agrave;nh tr&igrave;nh của&nbsp;<a href=\"https://vi.wikipedia.org/wiki/Son_Goku\">Son Goku</a>&nbsp;từ l&uacute;c b&eacute; đến trưởng th&agrave;nh, qua c&aacute;c lần tầm sư học v&otilde; v&agrave; kh&aacute;m ph&aacute; thế giới để truy t&igrave;m c&aacute;c vi&ecirc;n ngọc rồng với điều ước từ rồng thi&ecirc;ng. Xuy&ecirc;n suốt h&agrave;nh tr&igrave;nh của Son Goku, cậu đ&atilde; gặp được nhiều bạn b&egrave; v&agrave; chống lại những kẻ hung &aacute;c c&oacute; &acirc;m mưu d&ugrave;ng điều ước từ rồng thi&ecirc;ng để l&agrave;m b&aacute; chủ thế giới.</p>\r\n', '2024-11-06', 1, 990, 'Toriyama Akira'),
+(223, 'Dororo', 100, 'unnamed.png', 20, '<p>Truyện kể về một cậu b&eacute; bị cha m&igrave;nh hiến tế để đổi lấy tiền t&agrave;i v&agrave; danh phận.&nbsp;C&acirc;u b&eacute; kh&ocirc;ng chịu khuất phục đ&atilde; đi ngao du khắp nơi để t&igrave;m lại to&agrave;n bộ phận cơ thể của m&igrave;nh</p>\r\n', '2024-11-06', 1, 80, 'Tezuka Osamu');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -260,13 +267,13 @@ ALTER TABLE `hoadon`
 -- AUTO_INCREMENT cho bảng `nhaxuatban`
 --
 ALTER TABLE `nhaxuatban`
-  MODIFY `ID` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `ID` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `ID` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=220;
+  MODIFY `ID` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=224;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
