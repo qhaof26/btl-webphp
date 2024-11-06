@@ -1,16 +1,10 @@
 <?php
-ob_start();
-session_start();
- ?>
-
-
+	ob_start();
+	session_start();
+?>
 <?php 
 	include "head.php"
 	?>
-<?php
-$title ="Shop huy";
-$name ="Điện thoai";
-?>
 <?php 
 	include "top.php"
     ?>
@@ -104,7 +98,7 @@ if(isset($_POST['dangky']))
 			</div>
 			<div class="row">
 				<div class="col-md-6">
-					<div class="heading"><h2>Đăng nhập</h2></div>
+					<center><div class="heading"><h2>Đăng nhập</h2></div></center>
 					<form name="form1" id="ff1" method="POST" action="#">
 						<div class="form-group">
 							<input type="email" class="form-control" placeholder="Email" name="txtus" required value="">
@@ -112,7 +106,7 @@ if(isset($_POST['dangky']))
 						<div class="form-group">
 							<input type="password" class="form-control" placeholder="Mật khẫu" name="txtem"required value="">
 						</div>
-						<button type="submit" name="submit" class="btn btn-1" name="login" id="login">Đăng nhập</button>
+						<center><button type="submit" name="submit" class="btn btn-login" name="login" id="login">Đăng nhập</button></center>
 						<P style="color:red"><?php echo $kq; ?></p>
 						<a href="#"></a>
 						<br>
@@ -120,7 +114,7 @@ if(isset($_POST['dangky']))
 					</form>
 				</div>
 				<div class="col-md-6">
-					<div class="heading"><h2> Đăng ký tài khoản</h2></div>
+					<center><div class="heading"><h2> Đăng ký tài khoản</h2></div></center>
 					<form name="form2" id="ff2" method="post" action="#">
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="Họ Tên" name="fullname" id="firstname" value="<?php echo $name;?>" required >
@@ -137,7 +131,7 @@ if(isset($_POST['dangky']))
 						<div class="form-group">
 						<input type="password" class="form-control" placeholder="Mật khẩu nhập lại" name="repass" id="repass" value="<?php echo $repass;?>" required >
 						</div>
-						<button type="submit" name="dangky" class="btn btn-1">Đăng kí</button>
+						<center><button type="submit" name="dangky" class="btn btn-login">Đăng kí</button></center>
 						<P style="color:red"><?php echo $kqdk; ?></p>
 					</form>
 				</div>

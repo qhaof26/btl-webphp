@@ -4,27 +4,14 @@
 			<div class="wrap-footer">
 				<div class="row">
 					<div class="col-md-3 col-footer footer-1">
-						<h5>Nhà sách online</h5>
-						<p>Nhà sách online với rất nhiều đầu sách hấp dẫn cho bạn đọc lựa chọn.</p>
+						<h5>Nhóm 7: </h5>
+						<h4>Giang Quốc Hào : 26/09/2003</h4>
+						<h4>Lý Hồng Bính: 20/10/2003</h4>
+						<h4>Trần Chí Đức: 10/05/2003</h4>
+						
 					</div>
-					</div>
-					<p><span class="glyphicon glyphicon-home"></span>Hà Nội, Việt Nam.</p>
 					
 			</div>
 		</div>
-		<div class="copyright">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						 Copyright © 2021
-
-					</div>
-					<div class="col-md-6">
-						<div class="pull-right">
-							Đồ án lập trình web nâng cao - Nhóm 20
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 	</footer>

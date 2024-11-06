@@ -5,8 +5,7 @@
 	include "head.php";
 	?>
 <?php
-$title ="Shop huy";
-$name ="Điện thoai";
+
 ?>
 <?php 
 	include "top.php"
@@ -18,18 +17,16 @@ $name ="Điện thoai";
 	include "navigation.php"
 	?>
 
-	<!--//////////////////////////////////////////////////-->
-	<!--///////////////////Product Page///////////////////-->
-	<!--//////////////////////////////////////////////////-->
 	<div id="page-content" class="single-page">
 	<?php
+	$id;	
    require 'inc/myconnect.php';
    //lay san pham theo id
-   $id = $_GET["id"];
-   $query="SELECT s.ID,s.Ten,s.date,s.Gia,s.HinhAnh,s.tacgia,s.KhuyenMai,s.giakhuyenmai,s.Mota, n.Ten as Tennhasx,s.Manhasx
+   if (isset($_GET["id"])) {
+    $id = $_GET["id"];}
+   $query='SELECT s.ID,s.Ten,s.date,s.Gia,s.HinhAnh,s.tacgia,s.KhuyenMai,s.giakhuyenmai,s.Mota, n.Ten as Tennhasx,s.Manhasx
    from sanpham s 
-   LEFT JOIN nhaxuatban n on n.ID = s.Manhasx
-	WHERE  s.id =".$id;
+   LEFT JOIN nhaxuatban n on n.ID = s.Manhasx WHERE  s.ID ='.$id;
    $result = $conn->query($query);
 $row = $result->fetch_assoc();
 if(isset($_POST['submit']))
@@ -45,7 +42,7 @@ if(isset($_POST['submit']))
             $sl=1;
         }
         $_SESSION['cart'][$idsp] = $sl;
-        echo "<script>window.location.replace('http://host2.org/cart.php'); </script>";
+        echo "<script>window.location.replace('http://localhost:3000/btl-webphp/cart.php'); </script>";
 
 }
 

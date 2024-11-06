@@ -129,10 +129,21 @@ $name ="Điện thoai";
 							<label>Số lượng: </label> 
 							<input class="form-inline quantity" style="margin-right: 80px;width:50px" min="1" max ="99" type="number" name ="qty[<?php echo $s["ID"] ?>]" value="<?php echo $_SESSION['cart'][$s["ID"]]?>"> 
 						     <div>
-								<input type="submit" name="update" style="margin-top:31px"  value="cập nhật Sách này" class="btn btn-2" />
+								<input type="submit" name="update" style="margin-top:31px;background-color: green"  value="CẬP NHẬP SÁCH NÀY" class="btn btn-2" />
 							</div>
 							<hr>
-							<input type="submit" name="remove" value="xóa Sách này" class="btn btn-default pull-right" />	
+							<input type="submit" name="remove" value="Xóa Sách này" style="
+    background-color: #e74c3c;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+" class="pull-right" />
+
+	
 							<input type="hidden" name="idsprm" value="<?php echo $s["ID"] ?>" />
 							<?php
                                  if($s["KhuyenMai"] == true)

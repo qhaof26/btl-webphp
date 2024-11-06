@@ -5,8 +5,7 @@
 	include "head.php"
 	?>
 <?php
-$title ="Shop huy";
-$name ="Điện thoai";
+
 ?>
 <?php 
 	include "top.php"

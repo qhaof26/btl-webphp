@@ -2,8 +2,6 @@
 include "head.php"
 ?>
 <?php
-$title ="Shop huy";
-$name ="Điện thoai";
 ?>
 <body>
 <div id="fb-root"></div>

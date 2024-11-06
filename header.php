@@ -1,18 +1,18 @@
-	
-
 	<header class="container">
 		<div class="row">
-			<div class="col-md-4" style="margin-bottom:25px">
-				<div id="logo"><h5>NHÀ SÁCH ONLINE</h5></div>
+			<div class="col-md-2" style="margin-bottom:25px">
+				<div id="logo"><h5>NHÀ SÁCH TULEN</h5>
+				<p><img src="../btl-webphp/images/Clove2_N2emWnD.png"></p></div>
+				
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-6">
 				<form class="form-search" method="GET" action="timkiem.php">  
-					<input type="text"  class="input-medium search-query" name="txttimkiem" required>  
+					<input type="text"  class="input-medium search-query" name="txttimkiem" placeholder="Nhập sách cần tìm kiếm..." required>  
 					<button type="submit" name="tk" class="btn"><span class="glyphicon glyphicon-search"></span></button>  
 				</form>
 			</div>
 			<div class="col-md-4">
-				<div id="cart"><a class="btn btn-1" href="cart.php"><span class="glyphicon glyphicon-shopping-cart"></span>Giỏ hàng (<?php
+				<div id="cart"><a class="btn btn-cart" href="cart.php"><span class="glyphicon glyphicon-shopping-cart"></span>Giỏ hàng (<?php
 			$ok=1;
 			 if(isset($_SESSION['cart']))
 			 {
@@ -33,13 +33,12 @@
 			{
 				echo   "0";
 			}
-			
-			
+
 			?>)</a></div>
 			</div>
 		</div>
 	</header>
-	
+
 
 
 

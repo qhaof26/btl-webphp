@@ -13,13 +13,13 @@
 	<?php 
 	include "navigation.php"
 	?>
+
 	<?php 
 	include "sider.php"
     ?>
     					<div class="row">
 				<div class="col-lg-12">
 					<div class="heading"><h2>Sách đang khuyến mãi</h2></div>
-	
 					<div class="products">
 					<?php
    require 'inc/truyvan.php';
@@ -71,4 +71,5 @@
 	include "footer.php"
 	?>
     </body>
+	
 </html>

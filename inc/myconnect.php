@@ -1,5 +1,5 @@
 <?php
-$conn=mysqli_connect("localhost","root","","ban_sach");
+$conn=mysqli_connect("localhost","root","","ql_bansach");
 // Check connection
 if ($conn->connect_error)
   {
