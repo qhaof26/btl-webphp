@@ -10,14 +10,10 @@ ob_start();
        }
 
 ?>
-
 <?php 
 	include "head.php"
 	?>
-<?php
-$title ="Shop huy";
-$name ="Điện thoai";
-?>
+
 <?php 
 	include "top.php"
     ?>
@@ -290,7 +286,7 @@ $name ="Điện thoai";
 			</div>
 			</div>
 			</div>	
-							<input type="submit" name="Dat" value="Đặt hàng" class="btn btn-1" />	
+							<input type="submit" name="Dat" value="Đặt hàng" class="btn btn-buy" />	
 			</div>
 	</div>	
     </form>		

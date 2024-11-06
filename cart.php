@@ -47,21 +47,20 @@ $name ="Điện thoai";
 			<div class="cart">
 			<p><?php
 			$ok=1;
-			 if(isset($_SESSION['cart']))
-			 {
-				 foreach($_SESSION['cart'] as $key => $value)
-				 {
+			if(isset($_SESSION['cart']))
+			{
+				foreach($_SESSION['cart'] as $key => $value)
+				{
 					 if(isset($key))
 					 {
 						$ok=2;
 					 }
-				 }
-			 }
-			
-			 if($ok == 2)
-			 {
+				}
+			}
+			if($ok == 2)
+			{
 				echo "Có ".count($_SESSION['cart']). " sách trong giỏ hàng ";
-			 }
+			}
 			else
 			{
 				echo   "<p>Không có có Sách nào trong giỏ hàng</p>";
@@ -69,7 +68,7 @@ $name ="Điện thoai";
 			
 			$sl = count($_SESSION['cart']);
 			?>
-			</p>			
+			</p>
 			</div>
 			<?php
 
@@ -110,16 +109,16 @@ $name ="Điện thoai";
 								</ul>
 							</div>
 							<?php
-                                 if($s["KhuyenMai"] == true)
-								 {                                      
+                                if($s["KhuyenMai"] == true)
+								{
 								?>
 								<div class="price"><?php  echo $s["giakhuyenmai"]?>.000 VNĐ</div>
 								<?php 
 								}
 								?>
 								<?php
-                                 if($s["KhuyenMai"] == false)
-								 {
+                                if($s["KhuyenMai"] == false)
+								{
 								?>
 								<div class="price"><?php  echo $s["Gia"]?>.000 VNĐ</div>
 								<?php 
@@ -129,21 +128,20 @@ $name ="Điện thoai";
 							<label>Số lượng: </label> 
 							<input class="form-inline quantity" style="margin-right: 80px;width:50px" min="1" max ="99" type="number" name ="qty[<?php echo $s["ID"] ?>]" value="<?php echo $_SESSION['cart'][$s["ID"]]?>"> 
 						     <div>
-								<input type="submit" name="update" style="margin-top:31px;background-color: green"  value="CẬP NHẬP SÁCH NÀY" class="btn btn-2" />
+								<input type="submit" name="update" style="margin-top:31px;"  value="CẬP NHẬT" class="btn btn-warning" />
 							</div>
 							<hr>
 							<input type="submit" name="remove" value="Xóa Sách này" style="
-    background-color: #e74c3c;
-    color: #fff;
-    font-weight: bold;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-" class="pull-right" />
+																					background-color: #e74c3c;
+																					color: #fff;
+																					font-weight: bold;
+																					border: none;
+																					padding: 10px 20px;
+																					border-radius: 5px;
+																					cursor: pointer;
+																					transition: background-color 0.3s ease;
+																				" class="pull-right" />
 
-	
 							<input type="hidden" name="idsprm" value="<?php echo $s["ID"] ?>" />
 							<?php
                                  if($s["KhuyenMai"] == true)
@@ -163,7 +161,6 @@ $name ="Điện thoai";
 								<?php 
 								}
 								?>
-						
 						</div>
 					</div>
 
@@ -171,50 +168,50 @@ $name ="Điện thoai";
 				</div>	
 			</form>
 			<?php
-                                 if($s["KhuyenMai"] == true)
-								 {                                      
-								?>
-											<?php 
-				              $total +=$_SESSION['cart'][$s["ID"]] * $s["giakhuyenmai"]?>
-								<?php 
-								}
-								?>
-								<?php
-                                 if($s["KhuyenMai"] == false)
-								 {
-								?>
-								<?php 
-				              $total +=$_SESSION['cart'][$s["ID"]] * $s["Gia"]?>
-								<?php 
-								}
-								?>
-		
-			</div>
+                if($s["KhuyenMai"] == true)
+				{                                      
+			?>
 			<?php 
+				$total +=$_SESSION['cart'][$s["ID"]] * $s["giakhuyenmai"]?>
+			<?php 
+				}
+			?>
+			<?php
+            	if($s["KhuyenMai"] == false)
+				{
+			?>
+			<?php
+				$total +=$_SESSION['cart'][$s["ID"]] * $s["Gia"]?>
+			<?php
+				}
+			?>
+			</div>
+			<?php
 				}
 			}
 			?>
-				
+
 			<div class="row">
-			<a href="rmcart.php" class="btn btn-2" style="margin-bottom:31px">Xóa hết giỏ hàng</a>
-				<div class="col-md-4 col-md-offset-8 ">
+			<a href="rmcart.php" class="btn btn-2" style="margin-bottom:20px">Xóa hết giỏ hàng</a>
+			<a href="index.php" class="btn btn-primary" style="margin-bottom:20px">Chọn những sách khác</a>
+				<!-- <div class="col-md-4 col-md-offset-8 ">
 					<center><a href="index.php" class="btn btn-1" style="margin-left:-76px">Chọn những sách khác</a></center>
-				</div>
+				</div> -->
 			<div class="row">
 				<div class="pricedetails">
 					<div class="col-md-4 col-md-offset-8" >
 						<table style="margin-right:31px">
-							<h6>Price Details</h6>
+							<h5>Thanh toán</h5>
 							<tr>
-								<td>Số lượng sách </td>
+								<td>Số loại sách </td>
 								<td><?php echo $sl ?></td>
 							</tr>
 							<tr style="border-top: 1px solid #333">
 								<td><h5>Tổng cộng</h5></td>
-								<td><?php echo $total ?>.000</td>
+								<td style="font-weight:bold; color:red;"><?php echo $total ?>.000 VND</td>
 							</tr>
 						</table>
-						<center><a href="dathang.php" class="btn btn-1">Đặt hàng</a></center>
+						<center><a href="dathang.php" class="btn btn-buy">Đặt hàng</a></center>
 					</div>
 				</div>
 			</div>
